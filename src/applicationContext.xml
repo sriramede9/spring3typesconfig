@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Fashion Tips -->
+	<!-- Define your beans here -->
+
+	<!-- <bean id="myFashion" class="animal.HairStylist"></bean> -->
+
+	<!-- Define your beans here -->
+	<bean id="hello" class="trail.Hello" init-method="initmethod"
+		destroy-method="endmeth">
+
+		<!-- <constructor-arg ref="myFashion"></constructor-arg> -->
+
+		<!-- <context:component-scan base-package="trail"></context:component-scan> -->
+
+
+
+	</bean>
+
+	<bean id="par" class="trail.Parent">
+		<property name="message1" value="Hello World!" />
+		<property name="message2" value="Hello Second World!" />
+	</bean>
+
+	<bean id="chi" class="trail.Child" parent="par">
+		<!--<property name = "message1" value = "Hello India!"/> -->
+		<property name="message3" value="Namaste India!" />
+	</bean>
+
+	<!-- we can abstract out a bean and can be referenced to many children -->
+
+	<bean id="abs" abstract="true">
+		<property name="message1" value="Hello World!" />
+		<property name="message2" value="Hello Second World!" />
+
+	</bean>
+
+	<!-- Now if I use abs as my parent I do not have to define message1 and 
+		message2 unless i want my own values -->
+
+
+	<bean id="chil" class="trail.Child" parent="abs">
+		<property name="message3" value="One more shot"></property>
+	</bean>
+
+	<!-- constructor injection with 0,1,2 params -->
+	<bean id="cos" class="trail.ConstInjection">
+		<constructor-arg index="0" value="Sri"></constructor-arg>
+		<constructor-arg index="1" value="24"></constructor-arg>
+	</bean>
+
+	<!-- setter method injection -->
+
+	<bean id="smi" class="trail.SettermethInjection">
+		<property name="Style" value="cascade style">
+		</property>
+	
+	<property name="Hllo" >
+	<bean id="hlo" class="trail.Hello"></bean>
+		</property>	
+	</bean>
+	
+	
+
+
+
+</beans>
+
+
+
+
+
